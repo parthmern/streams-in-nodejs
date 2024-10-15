@@ -14,14 +14,18 @@ const server = http.createServer((req, res) => {
         readableStream.pipe(res);
 
 
-        
+        let i = 0;
         readableStream.on('data', (chunk) => {
-            console.log("Received chunk =============================================================", 
-            chunk);
+            // console.log("Received chunk =============================================================", 
+            // chunk);
+            
+            console.log(`chunk ${i} length: ${chunk.length}`);
+            i++;
         });
 
         readableStream.on('end', () => {
             console.log("Finished reading file");
+            i = 0;
         });
 
         
